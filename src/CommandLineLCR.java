@@ -24,6 +24,12 @@ public class CommandLineLCR {
     die.toString();
     */
     testDie();
+    Die[] die = new Die[3];
+    for (int i = 0; i < 3; i++){
+      die[i]= new Die();
+    }
+
+
 
 
 
