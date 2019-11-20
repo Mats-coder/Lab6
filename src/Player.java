@@ -13,7 +13,7 @@ public class Player {
     }
     public String[] playerRoll(int chips){
         String[] results = new String[chips];
-        for (int i = 0; i < chips; i++){
+        for (int i = 0; i < chips && i < 3 ; i++){
             results[i] = (die[i].rollDie());
         } return results;
 

@@ -28,6 +28,11 @@ public class CommandLineLCR {
     for (int i = 0; i < 3; i++){
       die[i]= new Die();
     }
+    Player Glenn = new Player("Glenn",die,5);
+    String x[] = Glenn.playerRoll(Glenn.getChips());
+    for (int i = 0; i < x.length; i++){
+      System.out.println(x[i]);
+    }
 
 
 
