@@ -6,10 +6,26 @@ import java.util.Scanner;
  */
 public class CommandLineLCR {
 
+  public static Die testDie(){
+    Die die = new Die();
+    die.rollDie();
+    die.toString();
+    return die;
+  }
+
   public static void main(String[] args) {
     // Use this as an test area when starting out
     // I.e. instantiate objects and test
     // Later just comment out (don't erase the test code!)
+    /*Die die = new Die();
+    for (int i = 0; i < 10; i++){
+      die.rollDie();
+    }
+    die.toString();
+    */
+    testDie();
+
+
 
 
     // TODO: Uncomment this when you are done
