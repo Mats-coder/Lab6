@@ -11,8 +11,13 @@ public class Player {
     public int getChips() {
         return chips;
     }
+
+
     public String[] playerRoll(int chips){
         String[] results = new String[chips];
+        if (chips > 3){
+            results = new String[3];
+        }
         for (int i = 0; i < chips && i < 3 ; i++){
             results[i] = (die[i].rollDie());
         } return results;
