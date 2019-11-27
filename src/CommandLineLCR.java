@@ -7,12 +7,7 @@ import java.util.Scanner;
  */
 public class CommandLineLCR {
 
-  public static Die testDie(){
-    Die die = new Die();
-    die.rollDie();
-    die.toString();
-    return die;
-  }
+
 
   public static void main(String[] args) {
     // Use this as an test area when starting out
@@ -23,14 +18,18 @@ public class CommandLineLCR {
       die.rollDie();
     }
     die.toString();
-    */
+
     testDie();
-    Die[] die = new Die[3];
-    for (int i = 0; i < 3; i++){
-      die[i]= new Die();
-    }
-    Player Glenn = new Player("Glenn",die,2);
-    System.out.println(Arrays.toString(Glenn.playerRoll(Glenn.getChips())));
+        System.out.println(Arrays.toString(lcr.getPlayers()));
+    System.out.println(lcr.players[0].name);
+    System.out.println(Arrays.toString(lcr.players[0].playerRoll(lcr.players[0].getChips())));
+    testPlayer();*/
+    LCRGame lcr = new LCRGame("Anna","Johan","Pernilla");
+    System.out.println("Current player is " +lcr.players[0].name+" ("+lcr.players[0].chips+" chips)");
+    System.out.println(Arrays.toString(lcr.players[0].playerRoll(lcr.players[0].getChips())));
+
+
+
 
 
 
@@ -43,6 +42,21 @@ public class CommandLineLCR {
 
   // TODO: For each class you implement, add a method here to test it.
   // private static void testXXX() { ... }
+  public static Die testDie(){
+    Die die = new Die();
+    die.rollDie();
+    return die;
+  }
+  public static void testPlayer(){
+    Die[] die = new Die[3];
+    for (int i = 0; i < 3; i++){
+      die[i]= new Die();
+    }
+    Player Glenn = new Player("Glenn",die, 3);
+    System.out.println(Arrays.toString(Glenn.playerRoll(Glenn.getChips())));
+  }
+
+
 
   // TODO: Uncomment below when possible
   public static void runCommandLineLCR() {
@@ -81,14 +95,15 @@ public class CommandLineLCR {
     }*/
   }
 
-  /*  TODO
+  /*  TODO?
   private static LCRGame buildLCRGame() {
-    ...
+    LCRGame lcr = new LCRGame("Anna", "Pernilla", "Gunnar");
+    return lcr;
   }
   */
-
   /* TODO
-  private static void render(LCRGame lcr) {
+
+    private static void render(LCRGame lcr) {
 
     // This needs overridden toString method to work!
     for (Die d : lcr.getDice()) {
@@ -101,5 +116,6 @@ public class CommandLineLCR {
     }
     System.out.println();
   }*/
+
 
 }

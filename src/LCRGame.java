@@ -22,6 +22,12 @@ public class LCRGame {
     public Player[] getPlayers() {
         return players;
     }
+    /* TODO
+    public Player getWinner(){
+        return ;
+    }*/
+
+
 }
 
 

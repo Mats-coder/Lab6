@@ -13,12 +13,13 @@ public class Die {
         int rand = (int)(Math.random()*6);
         return this.sides[rand];
     }
+    /* TODO
     @Override
     public String toString(){
         String die = "";
-        for(int i = 0; i < this.sides.length; i++){
+        /*for(int i = 0; i < this.sides.length; i++){
             die += this.sides[i];
         }
         return die;
-    }
+    } */
 }
