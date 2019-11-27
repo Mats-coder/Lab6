@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class Die {
     String[] sides;
+    String thisSideUp;
     public Die(){
         this.sides = new String[6];
         Arrays.fill(sides, ".");
@@ -11,15 +12,12 @@ public class Die {
     }
     public String rollDie(){
         int rand = (int)(Math.random()*6);
+        thisSideUp = this.sides[rand];
         return this.sides[rand];
     }
-    /* TODO
+
     @Override
     public String toString(){
-        String die = "";
-        /*for(int i = 0; i < this.sides.length; i++){
-            die += this.sides[i];
-        }
-        return die;
-    } */
+        return thisSideUp;
+    }
 }

@@ -15,12 +15,52 @@ public class LCRGame {
         return chipsPot;
     }
 
-    public Die[] getDice() {
+    public Die[] getGameDice(int i) {
+        Die[] currentDice;
+        if (i < 3) {
+            currentDice = new Die[i];
+        } else {
+            currentDice = new Die[3];
+        }
+        for (int k = 0; k < i && k < 3; k++){
+            currentDice[k] = dice[k];
+        }
+        return currentDice;
+    }
+    public Die[] getDice(){
         return dice;
     }
 
     public Player[] getPlayers() {
         return players;
+    }
+    public void playTurn(int i){
+
+        players[i].playerRoll(players[i].chips);
+        for(Die d: getGameDice(players[i].chips)){
+            if (d.thisSideUp == "C"){
+                players[i].chips -= 1;
+
+            } else if (d.thisSideUp == "R"){
+                players[i].chips -= 1;
+                if (i == 0){
+                    players[1].chips+=1;
+                } else if (i == 1){
+                    players[2].chips+=1;
+                } else {
+                    players[0].chips+=1;
+                }
+            } else if (d.thisSideUp == "L"){
+                players[i].chips -= 1;
+                if (i == 0){
+                    players[2].chips+=1;
+                } else if (i == 1){
+                    players[0].chips+=1;
+                } else {
+                    players[1].chips+=1;
+                }
+            }
+        }
     }
     /* TODO
     public Player getWinner(){

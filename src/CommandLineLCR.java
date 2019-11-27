@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  * This class is a skeleton. Don't change the overall
@@ -23,10 +25,26 @@ public class CommandLineLCR {
         System.out.println(Arrays.toString(lcr.getPlayers()));
     System.out.println(lcr.players[0].name);
     System.out.println(Arrays.toString(lcr.players[0].playerRoll(lcr.players[0].getChips())));
-    testPlayer();*/
+    testPlayer();
     LCRGame lcr = new LCRGame("Anna","Johan","Pernilla");
-    System.out.println("Current player is " +lcr.players[0].name+" ("+lcr.players[0].chips+" chips)");
-    System.out.println(Arrays.toString(lcr.players[0].playerRoll(lcr.players[0].getChips())));
+    render(lcr);
+    lcr.playTurn();
+    render(lcr);
+
+    lcr.players[0].playerRoll(lcr.players[0].chips);
+    for(Die d: lcr.getDice()){
+        if (d.thisSideUp == "C"){
+            lcr.players[0].chips -= 1;
+        } else if (d.thisSideUp == "R"){
+            lcr.players[0].chips -= 1;
+            lcr.players[1].chips += 1;
+        } else if (d.thisSideUp == "L"){
+            lcr.players[0].chips -= 1;
+            lcr.players[2].chips += 1;
+        }
+    }
+    render(lcr);
+*/
 
 
 
@@ -37,7 +55,7 @@ public class CommandLineLCR {
 
 
     // TODO: Uncomment this when you are done
-    // runCommandLineLCR();
+    runCommandLineLCR();
   }
 
   // TODO: For each class you implement, add a method here to test it.
@@ -61,20 +79,26 @@ public class CommandLineLCR {
   // TODO: Uncomment below when possible
   public static void runCommandLineLCR() {
 
-    // LCRGame lcr = buildLCRGame();
+    LCRGame lcr = buildLCRGame();
+    int i = 0;
     System.out.println("LCR started");
-    // render(lcr);
+    render(lcr);
 
     Scanner s = new Scanner(System.in);
 
     boolean done = false;
     while (!done) {
-      //System.out.println("Current player is " + ...);
+      System.out.println("Current player is " + lcr.players[i].name);
       System.out.print("> ");
       String cmd = s.nextLine();
       switch (cmd) {
         case "r":
-          // TODO: Play one player's turn and render the game's state
+            lcr.playTurn(i);
+          render(lcr);
+          i++;
+          if (i > 2){
+              i = 0;
+          }
           break;
         case "q":
           done = true;
@@ -95,27 +119,27 @@ public class CommandLineLCR {
     }*/
   }
 
-  /*  TODO?
   private static LCRGame buildLCRGame() {
     LCRGame lcr = new LCRGame("Anna", "Pernilla", "Gunnar");
     return lcr;
   }
-  */
-  /* TODO
+
 
     private static void render(LCRGame lcr) {
 
-    // This needs overridden toString method to work!
     for (Die d : lcr.getDice()) {
-      System.out.print(d + "  ");
+        if (d.thisSideUp != null)
+            System.out.print(d + "  ");
+        else
+            continue;
     }
     System.out.println();
     System.out.print("Players: ");
     for (Player p : lcr.getPlayers()) {
-      System.out.print(p + " ");
+      System.out.print(p + " ("+p.chips+" chips) ");
     }
     System.out.println();
-  }*/
+  }
 
 
 }
