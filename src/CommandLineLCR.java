@@ -88,6 +88,11 @@ public class CommandLineLCR {
 
     boolean done = false;
     while (!done) {
+      if (!lcr.checkForWinner()){
+        done = false;
+      } else {
+        done = true;
+      }
       System.out.println("Current player is " + lcr.players[i].name);
       System.out.print("> ");
       String cmd = s.nextLine();
@@ -109,11 +114,9 @@ public class CommandLineLCR {
     }
 
     /* TODO
-    if ( ... ) {
-      // Game is finished
+    if (done = true) {
       System.out.println("Game over! Winner is " + lcr.getWinner());
     } else {
-      // Game was aborted
       System.out.println("Game aborted");
       render(lcr);
     }*/
@@ -127,7 +130,7 @@ public class CommandLineLCR {
 
     private static void render(LCRGame lcr) {
 
-    for (Die d : lcr.getDice()) {
+    for (Die d : lcr.getGameDice(lcr.previousChips)) {
         if (d.thisSideUp != null)
             System.out.print(d + "  ");
         else

@@ -2,6 +2,7 @@ public class LCRGame {
     Player[] players = new Player[3];
     Die[] dice = new Die[3];
     int chipsPot = 0;
+    int previousChips;
     public LCRGame(String name1, String name2, String name3){
         for (int i = 0; i < 3; i++){
             dice[i]= new Die();
@@ -37,6 +38,7 @@ public class LCRGame {
     public void playTurn(int i){
 
         players[i].playerRoll(players[i].chips);
+        previousChips = players[i].chips;
         for(Die d: getGameDice(players[i].chips)){
             if (d.thisSideUp == "C"){
                 players[i].chips -= 1;
@@ -62,10 +64,34 @@ public class LCRGame {
             }
         }
     }
-    /* TODO
+
+    public boolean checkForWinner(){
+        int playersLeft = 0;
+        for (int i = 0; i < players.length; i++){
+            if (players[i].chips > 0){
+                playersLeft += 1;
+            } else {
+                continue;
+            }
+        }
+        if (playersLeft < 2){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public Player getWinner(){
-        return ;
-    }*/
+        Player winner = players[0];
+        for (int i = 0; i < players.length; i++){
+            if (players[i].chips > 0){
+                winner = players[i];
+            } else {
+                continue;
+            }
+        }
+        return winner;
+    }
 
 
 }
