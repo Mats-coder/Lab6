@@ -88,38 +88,37 @@ public class CommandLineLCR {
 
     boolean done = false;
     while (!done) {
-      if (!lcr.checkForWinner()){
-        done = false;
-      } else {
-        done = true;
-      }
-      System.out.println("Current player is " + lcr.players[i].name);
-      System.out.print("> ");
-      String cmd = s.nextLine();
-      switch (cmd) {
-        case "r":
-            lcr.playTurn(i);
-          render(lcr);
-          i++;
-          if (i > 2){
-              i = 0;
+      if (!lcr.checkForWinner()) {
+          System.out.println("Current player is " + lcr.players[i].name);
+          System.out.print("> ");
+          String cmd = s.nextLine();
+          switch (cmd) {
+              case "r":
+                  lcr.playTurn(i);
+                  render(lcr);
+                  i++;
+                  if (i > 2) {
+                      i = 0;
+                  }
+                  break;
+              case "q":
+                  done = true;
+                  break;
+              default:
+                  System.out.println("Enter 'r' to continue or 'q' to quit");
           }
-          break;
-        case "q":
+      } else {
           done = true;
           break;
-        default:
-          System.out.println("Enter 'r' to continue or 'q' to quit");
       }
     }
 
-    /* TODO
-    if (done = true) {
+    if (lcr.checkForWinner()) {
       System.out.println("Game over! Winner is " + lcr.getWinner());
     } else {
       System.out.println("Game aborted");
       render(lcr);
-    }*/
+    }
   }
 
   private static LCRGame buildLCRGame() {
