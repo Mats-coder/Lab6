@@ -12,10 +12,6 @@ public class LCRGame {
         players[2] = new Player(name3, dice,3);
     }
 
-    public int getChipsPot() {
-        return chipsPot;
-    }
-
     public Die[] getGameDice(int i) {
         Die[] currentDice;
         if (i < 3) {
@@ -27,9 +23,6 @@ public class LCRGame {
             currentDice[k] = dice[k];
         }
         return currentDice;
-    }
-    public Die[] getDice(){
-        return dice;
     }
 
     public Player[] getPlayers() {
