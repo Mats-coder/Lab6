@@ -1,7 +1,6 @@
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
+
 
 /**
  * This class is a skeleton. Don't change the overall
